@@ -15,21 +15,28 @@ using std::vector;
 class ProcessMonitor
 {
 public:
+    enum ProcessState {
+        NotRunning,
+        Starting,
+        Running
+    };
+
+    enum ExitStatus {
+        NormalExit,
+        CrashExit
+    };
+
     ProcessMonitor();
     int start(const string path, vector<string> &argv);
     int start(const string path);
+    void kill();
+
     int waitForExit();
-
     bool getProcessState();
-
     int getExitCode() const;
-
     int getSignalCode() const;
-
     bool getIsALive() const;
-
     bool getIsNormalExit() const;
-
 private:
     int start();
 
