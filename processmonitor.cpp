@@ -2,10 +2,11 @@
 
 ProcessMonitor::ProcessMonitor()
 {
-
+    m_private = new ProcessMonitorPrivate();
 }
 int ProcessMonitor::start(const string path, vector<string> &argv)
 {
+  if (m_private)
     m_processPath = path;
     int argc = argv.size();
     m_argv = new char *[argc+2];

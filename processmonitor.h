@@ -9,6 +9,8 @@
 #include <vector>
 #include <string>
 
+#include "processsmonitorprivate.h"
+
 using std::string;
 using std::vector;
 
@@ -27,30 +29,15 @@ public:
     };
 
     ProcessMonitor();
+    virtual ~ProcessMonitor();
+
     int start(const string path, vector<string> &argv);
     int start(const string path);
+
     void kill();
 
-    int waitForExit();
-    bool getProcessState();
-    int getExitCode() const;
-    int getSignalCode() const;
-    bool getIsALive() const;
-    bool getIsNormalExit() const;
 private:
-    int start();
-
-private:
-    string m_processPath;
-    char **m_argv;
-    int m_pid;
-    int m_reval;
-
-    int m_exitCode;
-    int m_signalCode;
-
-    bool m_isAlive;
-    bool m_isNormalExit;
+    ProcessMonitorPrivate *m_private;
 };
 
 #endif // PROCESSMONITOR_H
