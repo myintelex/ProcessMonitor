@@ -1,4 +1,3 @@
-#ProcessMonitor
 # ProcessMonitor
 这是我自己简单编写的一个进程类，仅用于 Linux 系统。
 
